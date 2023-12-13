@@ -541,6 +541,21 @@ public class MainActivity2 extends AppCompatActivity {
         }
     }
 
+ @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        closeSocket();
+    }
 
+    private void closeSocket() {
+        if (socket != null && !socket.isClosed()) {
+            try {
+                socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-}\
+  
+}
