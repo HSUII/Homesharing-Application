@@ -68,31 +68,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(mset == true && uset == false) { //관리자버튼만 on되있을 경우
+                    if(value>0){
                     if (Integer.parseInt(pass.getText().toString().trim()) == 0000) {
                         Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
                         startActivity(intent);
                     } else {
                         Toast.makeText(MainActivity.this, "관리자 비밀번호가 틀렸습니다.  다시한번 확인해 주세요", Toast.LENGTH_SHORT).show();
                     }
+                    }
+                    if(value<=0){
+                        Toast.makeText(MainActivity.this, "게스트가 체크아웃한 이후 로그인 할 수 있습니다", Toast.LENGTH_SHORT).show();
+                    }
                 }
-//                if(uset == true && mset == false&&value>0) {
-//                    Toast.makeText(MainActivity.this, "checkout시간이 지나 로그인할 수 없습니다", Toast.LENGTH_SHORT).show();
-//                    SharedPreferences pref4 = getSharedPreferences("SAVE", MODE_PRIVATE);
-//                    SharedPreferences.Editor editor4 = pref4.edit();
-//                    editor4.remove("Saveuserpassword");
-//                    editor4.commit();
-//
-//                    userlogin = 1234;
-//
-//                    SharedPreferences pref1 = getSharedPreferences("SAVE", MODE_PRIVATE);
-//                    SharedPreferences.Editor editor1 = pref1.edit();
-//                    editor1.putInt("Saveuserpassword", userlogin);
-//                    editor1.commit();
-//
-//
-//
-//
-//                }
+                
+
                 if(uset == true && mset == false  ) { //숙박객버튼만 on되있고, 입실날짜가 3일이 지나지 않은 경우
                     if (Integer.parseInt(pass.getText().toString().trim()) == userlogin) {
                         Intent intent = new Intent(getApplicationContext(), MainActivity3.class);
