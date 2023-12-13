@@ -141,7 +141,6 @@ public class MainActivity2 extends AppCompatActivity {
         webView = (WebView)findViewById(R.id.webView);
         webView.setWebViewClient(new WebViewClient()); // 이걸 안해주면 새창이 뜸
         passTxt = findViewById(R.id.passTxt);
-//        userpass = findViewById(R.id.userpass);
         changeBtn = findViewById(R.id.changeBtn);
         backBtn = findViewById(R.id.back);
         guestinfo1 = findViewById(R.id.guestinfo1);
@@ -256,7 +255,7 @@ public class MainActivity2 extends AppCompatActivity {
                 Toast.makeText(MainActivity2.this, "연결시도", Toast.LENGTH_SHORT).show();
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     (new Thread(new NetworkUDP("o"))).start(); // o라는 메세지를 라즈베리로 보냄
-//                    webView.loadUrl("http://"+ipaddress.getText().toString()+":8080/?action=stream"); // 스트림 주소를 웹뷰에 등록
+
                     connectText.setText("연결 안됨"); // 메세지가 오기전엔 not
                     // connect 키고 ㅔㅁ세지를 받으면 connected 로 표시
                     try{
@@ -492,14 +491,10 @@ public class MainActivity2 extends AppCompatActivity {
                 @Override
                 public void run() {
                     Log.e( "run: ", "Start");
-//                    if(mAudioRecord == null) {
-//                        mAudioRecord =  new AudioRecord(mAudioSource, mSampleRate, mChannelCount, mAudioFormat, mBufferSize);
-//                        mAudioRecord.startRecording();
-//                    }
+
                     Log.e( "run: ", "Starting");
                     byte[] readData = new byte[mBufferSize];
                     while(closed == 0) {
-//                        mAudioRecord.read(readData, 0, mBufferSize);
                         send(readData);
                         Log.e( "run: ", "read");
                     }
@@ -518,8 +513,7 @@ public class MainActivity2 extends AppCompatActivity {
                 while (true) {
                     byte buf[] = new byte[8192];
                     input_data.read(buf);
-//                    audioTrack.write(buf, 0, buf.length);
-//                    audioTrack.play();
+
                 }
             } catch (Exception ex) {
             }
